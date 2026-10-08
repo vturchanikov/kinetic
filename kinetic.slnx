@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/TripService/" />
+  <Folder Name="/src/TripService/src/">
+    <Project Path="src/TripService/src/TripService.Api/TripService.Api.csproj" />
+    <Project Path="src/TripService/src/TripService.Application/TripService.Application.csproj" />
+    <Project Path="src/TripService/src/TripService.Domain/TripService.Domain.csproj" />
+    <Project Path="src/TripService/src/TripService.Infrastructure/TripService.Infrastructure.csproj" />
+  </Folder>
+</Solution>
