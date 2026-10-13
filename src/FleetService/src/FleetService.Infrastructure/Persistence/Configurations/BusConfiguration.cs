@@ -23,5 +23,12 @@ public class BusConfiguration : IEntityTypeConfiguration<Bus>
 
         builder.Property(b => b.Capacity)
             .IsRequired();
+
+        builder.HasMany(b => b.Seats)
+            .WithOne(s => s.Bus)
+            .HasForeignKey(s => s.BusId);
+
+        builder.Navigation(b => b.Seats)
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 }

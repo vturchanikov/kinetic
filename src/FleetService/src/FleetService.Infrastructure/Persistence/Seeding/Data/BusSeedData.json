@@ -1,0 +1,206 @@
+[
+  {
+    "Code": "AG827",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+  {
+    "Code": "BR314",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+  {
+    "Code": "KT592",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+  {
+    "Code": "LM461",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+  {
+    "Code": "PX738",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+  {
+    "Code": "QV205",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+  {
+    "Code": "SF913",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+  {
+    "Code": "YD386",
+    "Model": "Mercedes-Benz Citaro",
+    "Capacity": 70
+  },
+
+  {
+    "Code": "AH421",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+  {
+    "Code": "BK705",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+  {
+    "Code": "CN163",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+  {
+    "Code": "DR849",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+  {
+    "Code": "FU274",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+  {
+    "Code": "GX638",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+  {
+    "Code": "HJ510",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+  {
+    "Code": "RK927",
+    "Model": "Volvo 8900",
+    "Capacity": 55
+  },
+
+  {
+    "Code": "AM352",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+  {
+    "Code": "BV814",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+  {
+    "Code": "CE467",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+  {
+    "Code": "DN921",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+  {
+    "Code": "EP583",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+  {
+    "Code": "FW146",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+  {
+    "Code": "GY732",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+  {
+    "Code": "JQ305",
+    "Model": "Scania Citywide",
+    "Capacity": 75
+  },
+
+  {
+    "Code": "AK619",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+  {
+    "Code": "CL247",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+  {
+    "Code": "DM835",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+  {
+    "Code": "ER461",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+  {
+    "Code": "FN708",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+  {
+    "Code": "GT152",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+  {
+    "Code": "HU394",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+  {
+    "Code": "JV826",
+    "Model": "Volvo B8R",
+    "Capacity": 48
+  },
+
+  {
+    "Code": "AP573",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  },
+  {
+    "Code": "BQ206",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  },
+  {
+    "Code": "CS741",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  },
+  {
+    "Code": "DL385",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  },
+  {
+    "Code": "EV914",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  },
+  {
+    "Code": "FW627",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  },
+  {
+    "Code": "GK438",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  },
+  {
+    "Code": "HN760",
+    "Model": "Mercedes-Benz Tourismo",
+    "Capacity": 49
+  }
+]

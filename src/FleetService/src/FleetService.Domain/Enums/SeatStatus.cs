@@ -2,5 +2,6 @@
 
 public enum SeatStatus
 {
-
+    Active,
+    Inactive,
 }
