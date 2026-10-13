@@ -1,5 +1,12 @@
 <Solution>
   <Folder Name="/src/" />
+  <Folder Name="/src/FleetService/" />
+  <Folder Name="/src/FleetService/src/">
+    <Project Path="src/FleetService/src/FleetService.Api/FleetService.Api.csproj" />
+    <Project Path="src/FleetService/src/FleetService.Application/FleetService.Application.csproj" />
+    <Project Path="src/FleetService/src/FleetService.Domain/FleetService.Domain.csproj" />
+    <Project Path="src/FleetService/src/FleetService.Infrastructure/FleetService.Infrastructure.csproj" />
+  </Folder>
   <Folder Name="/src/TripService/" />
   <Folder Name="/src/TripService/src/">
     <Project Path="src/TripService/src/TripService.Api/TripService.Api.csproj" />
