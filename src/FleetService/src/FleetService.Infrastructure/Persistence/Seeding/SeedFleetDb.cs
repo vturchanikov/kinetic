@@ -24,7 +24,7 @@ public class SeedFleetDb
 
         foreach(var bus in buses)
         {
-            var item = Bus.Create(bus.Code, bus.Model, bus.Capacity);
+            var item = Bus.Create(bus.Code, bus.Model, bus.Capacity, bus.Status);
             context.Buses.Add(item);
         }
 

@@ -2,205 +2,245 @@
   {
     "Code": "AG827",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 1
   },
   {
     "Code": "BR314",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 1
   },
   {
     "Code": "KT592",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 1
   },
   {
     "Code": "LM461",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 2
   },
   {
     "Code": "PX738",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 1
   },
   {
     "Code": "QV205",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 1
   },
   {
     "Code": "SF913",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 0
   },
   {
     "Code": "YD386",
     "Model": "Mercedes-Benz Citaro",
-    "Capacity": 70
+    "Capacity": 70,
+    "Status": 1
   },
 
   {
     "Code": "AH421",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 1
   },
   {
     "Code": "BK705",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 1
   },
   {
     "Code": "CN163",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 1
   },
   {
     "Code": "DR849",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 2
   },
   {
     "Code": "FU274",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 1
   },
   {
     "Code": "GX638",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 1
   },
   {
     "Code": "HJ510",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 0
   },
   {
     "Code": "RK927",
     "Model": "Volvo 8900",
-    "Capacity": 55
+    "Capacity": 55,
+    "Status": 1
   },
 
   {
     "Code": "AM352",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 1
   },
   {
     "Code": "BV814",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 1
   },
   {
     "Code": "CE467",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 1
   },
   {
     "Code": "DN921",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 2
   },
   {
     "Code": "EP583",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 1
   },
   {
     "Code": "FW146",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 1
   },
   {
     "Code": "GY732",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 1
   },
   {
     "Code": "JQ305",
     "Model": "Scania Citywide",
-    "Capacity": 75
+    "Capacity": 75,
+    "Status": 3
   },
 
   {
     "Code": "AK619",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 1
   },
   {
     "Code": "CL247",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 1
   },
   {
     "Code": "DM835",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 0
   },
   {
     "Code": "ER461",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 1
   },
   {
     "Code": "FN708",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 2
   },
   {
     "Code": "GT152",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 1
   },
   {
     "Code": "HU394",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 1
   },
   {
     "Code": "JV826",
     "Model": "Volvo B8R",
-    "Capacity": 48
+    "Capacity": 48,
+    "Status": 1
   },
 
   {
     "Code": "AP573",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 1
   },
   {
     "Code": "BQ206",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 1
   },
   {
     "Code": "CS741",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 2
   },
   {
     "Code": "DL385",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 1
   },
   {
     "Code": "EV914",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 0
   },
   {
     "Code": "FW627",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 1
   },
   {
     "Code": "GK438",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 1
   },
   {
     "Code": "HN760",
     "Model": "Mercedes-Benz Tourismo",
-    "Capacity": 49
+    "Capacity": 49,
+    "Status": 3
   }
 ]
