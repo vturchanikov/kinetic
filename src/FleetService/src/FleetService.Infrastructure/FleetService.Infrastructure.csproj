@@ -16,12 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FleetService.Application\FleetService.Application.csproj" />
     <ProjectReference Include="..\FleetService.Domain\FleetService.Domain.csproj" />
   </ItemGroup>
 	
     <ItemGroup>
-      <None Include="..\FleetService.Infrastructure\Persistence\Seeding\Data\BusSeedData.json"
-            Link="Seeding\Data\BusSeedData.json">
+      <None Include="..\FleetService.Infrastructure\Persistence\Seeding\Data\BusSeedData.json" Link="Seeding\Data\BusSeedData.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
