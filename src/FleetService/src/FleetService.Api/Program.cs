@@ -1,4 +1,7 @@
+using FleetService.Application.Interfaces;
+using FleetService.Application.Services;
 using FleetService.Infrastructure.Persistence;
+using FleetService.Infrastructure.Persistence.Repositories;
 using FleetService.Infrastructure.Persistence.Seeding;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +15,9 @@ builder.Services.AddDbContext<FleetDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddTransient<IBusesService, BusesService>();
+builder.Services.AddTransient<IBusesRepository, BusesRepository>();
 
 var app = builder.Build();
 
