@@ -60,11 +60,6 @@ public class BusesService(IBusesRepository busesRepository) : IBusesService
         throw new NotImplementedException();
     }
 
-    public Task DeleteBus(string code, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
     private async Task<bool> UpdateBusAsync(string code, CancellationToken cancellationToken, Action<Bus> action)
     {
         var bus = await busesRepository.GetBusByCodeAsync(code, cancellationToken);
