@@ -8,8 +8,5 @@ public interface IBusesRepository
     Task<Bus?> GetBusWithSeatsAsync(string code, CancellationToken canelationToken);
     Task<List<Bus>> GetBusesAsync(CancellationToken cancellationToken);
     Task<List<Bus>> GetActiveBusesAsync(CancellationToken cancellationToken);
-    Task<List<Bus>> GetBusesInRepair();
-    Task<List<Bus>> GetInactiveBuses();
-    Task<List<Bus>> GetRetiredBuses();
     Task SaveChangesAsync(CancellationToken cancellation);
 }

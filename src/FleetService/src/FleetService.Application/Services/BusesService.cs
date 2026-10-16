@@ -35,50 +35,24 @@ public class BusesService(IBusesRepository busesRepository) : IBusesService
         return buses.Adapt<List<BusDto>>();
     }
 
-    public async Task ActivateAsync(string code, CancellationToken cancellationToken)
+    public async Task<bool> ActivateAsync(string code, CancellationToken cancellationToken)
     {
-        var bus = await GetBusAsync(code, cancellationToken);
-
-        bus.ReturnToService();
-
-        await busesRepository.SaveChangesAsync(cancellationToken);
+        return await UpdateBusAsync(code, cancellationToken, bus => bus.ReturnToService());
     }
 
-    public async Task DeactivateAsync(string code, CancellationToken cancellationToken)
+    public async Task<bool> DeactivateAsync(string code, CancellationToken cancellationToken)
     {
-        var bus = await GetBusAsync(code, cancellationToken);
-
-        bus.Deactivate();
-
-        await busesRepository.SaveChangesAsync(cancellationToken);
+        return await UpdateBusAsync(code, cancellationToken, bus => bus.Deactivate());
     }
 
-    public async Task RetireAsync(string code, CancellationToken cancellationToken)
+    public async Task<bool> RetireAsync(string code, CancellationToken cancellationToken)
     {
-        var bus = await GetBusAsync(code, cancellationToken);
-
-        bus.Retire();
-
-        await busesRepository.SaveChangesAsync(cancellationToken);
+        return await UpdateBusAsync(code, cancellationToken, bus => bus.Retire());
     }
 
-    public async Task SendToRepairAsync(string code, CancellationToken cancellationToken)
+    public async Task<bool> SendToRepairAsync(string code, CancellationToken cancellationToken)
     {
-        var bus = await GetBusAsync(code, cancellationToken);
-
-        bus.SendToRepair();
-
-        await busesRepository.SaveChangesAsync(cancellationToken);
-    }
-
-    public Task DeactivateSeatAsync(string busCode, int seatNumber, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task ActivateSeatAsync(string busCode, int seatNumber, CancellationToken cancelToken)
-    {
-        throw new NotImplementedException();
+        return await UpdateBusAsync(code, cancellationToken, bus => bus.SendToRepair());
     }
 
     public Task CreateBus(Bus bus, CancellationToken cancellationToken)
@@ -91,8 +65,18 @@ public class BusesService(IBusesRepository busesRepository) : IBusesService
         throw new NotImplementedException();
     }
 
-    private async Task<Bus?> GetBusAsync(string code, CancellationToken cancellationToken)
+    private async Task<bool> UpdateBusAsync(string code, CancellationToken cancellationToken, Action<Bus> action)
     {
-        return await busesRepository.GetBusByCodeAsync(code, cancellationToken);        
+        var bus = await busesRepository.GetBusByCodeAsync(code, cancellationToken);
+
+        if(bus is null)
+        {
+            return false;
+        }
+
+        action(bus);
+
+        await busesRepository.SaveChangesAsync(cancellationToken);
+        return true;
     }
 }

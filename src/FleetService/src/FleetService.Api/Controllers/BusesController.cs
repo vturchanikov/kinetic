@@ -2,6 +2,7 @@
 using FleetService.Application.Interfaces;
 using FleetService.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace FleetService.Api.Controllers;
 
@@ -49,5 +50,57 @@ public class BusesController(IBusesService busesService) : ControllerBase
         var buses = await busesService.GetActiveBusesAsync(cancellationToken);
 
         return Ok(buses);
+    }
+
+    [HttpPost("{code}/activate")]
+    public async Task<ActionResult> ActivateBus(string code, CancellationToken cancellationToken)
+    {
+        var success = await busesService.ActivateAsync(code, cancellationToken);
+
+        if (!success)
+        {
+            return NotFound($"No bus with code {code} was found");
+        }
+
+        return NoContent();
+    }
+
+    [HttpPost("{code}/repair")]
+    public async Task<ActionResult> SendBusToRepair(string code, CancellationToken cancellationToken)
+    {
+        var success = await busesService.SendToRepairAsync(code, cancellationToken);
+
+        if (!success)
+        {
+            return NotFound($"No bus with code {code} was found");
+        }
+
+        return NoContent();
+    }
+
+    [HttpPost("{code}/deactivate")]
+    public async Task<ActionResult> DeactivateBus(string code, CancellationToken cancellationToken)
+    {
+        var success = await busesService.DeactivateAsync(code, cancellationToken);
+
+        if (!success)
+        {
+            return NotFound($"No bus with code {code} was found");
+        }
+
+        return NoContent();
+    }
+
+    [HttpPost("{code}/retire")]
+    public async Task<ActionResult> RetireBus(string code, CancellationToken cancellationToken)
+    {
+        var success = await busesService.RetireAsync(code, cancellationToken);
+
+        if (!success)
+        {
+            return NotFound($"No bus with code {code} was found");
+        }
+
+        return NoContent();
     }
 }
