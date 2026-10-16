@@ -9,7 +9,7 @@ public class BusesService(IBusesRepository busesRepository) : IBusesService
 {
     public async Task<BusDto?> GetBusByCodeAsync(string code, CancellationToken cancellationToken)
     {
-        var bus = await GetBusAsync(code, cancellationToken);
+        var bus = await busesRepository.GetBusByCodeAsync(code, cancellationToken);
 
         return bus.Adapt<BusDto>();
     }

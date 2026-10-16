@@ -53,52 +53,37 @@ public class BusesController(IBusesService busesService) : ControllerBase
     }
 
     [HttpPost("{code}/activate")]
-    public async Task<ActionResult> ActivateBus(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> ActivateBus(string code, CancellationToken cancellationToken)
     {
-        var success = await busesService.ActivateAsync(code, cancellationToken);
-
-        if (!success)
-        {
-            return NotFound($"No bus with code {code} was found");
-        }
-
-        return NoContent();
+        return ExecuteBusActionAsync(code, cancellationToken, busesService.ActivateAsync);
     }
 
     [HttpPost("{code}/repair")]
-    public async Task<ActionResult> SendBusToRepair(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> SendBusToRepair(string code, CancellationToken cancellationToken)
     {
-        var success = await busesService.SendToRepairAsync(code, cancellationToken);
-
-        if (!success)
-        {
-            return NotFound($"No bus with code {code} was found");
-        }
-
-        return NoContent();
+        return ExecuteBusActionAsync(code, cancellationToken, busesService.SendToRepairAsync);
     }
 
     [HttpPost("{code}/deactivate")]
-    public async Task<ActionResult> DeactivateBus(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> DeactivateBus(string code, CancellationToken cancellationToken)
     {
-        var success = await busesService.DeactivateAsync(code, cancellationToken);
-
-        if (!success)
-        {
-            return NotFound($"No bus with code {code} was found");
-        }
-
-        return NoContent();
+        return ExecuteBusActionAsync(code, cancellationToken, busesService.DeactivateAsync);
     }
 
     [HttpPost("{code}/retire")]
-    public async Task<ActionResult> RetireBus(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> RetireBus(string code, CancellationToken cancellationToken)
     {
-        var success = await busesService.RetireAsync(code, cancellationToken);
+        return ExecuteBusActionAsync(code, cancellationToken, busesService.RetireAsync);
+    }
+
+    private async Task<ActionResult> ExecuteBusActionAsync(string code, CancellationToken cancellationToken,
+        Func<string, CancellationToken, Task<bool>> action)
+    {
+        var success = await action(code, cancellationToken);
 
         if (!success)
         {
-            return NotFound($"No bus with code {code} was found");
+            return NotFound($"No bus with the code {code} was found");
         }
 
         return NoContent();
