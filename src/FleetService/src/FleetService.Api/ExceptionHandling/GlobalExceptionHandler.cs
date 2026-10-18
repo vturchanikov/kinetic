@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using FleetService.Application.Exceptions;
+using FleetService.Domain.Exceptions;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FleetService.Api.ExceptionHandling;
@@ -13,7 +15,8 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IE
         {
             ArgumentOutOfRangeException => StatusCodes.Status400BadRequest,
             ArgumentException => StatusCodes.Status400BadRequest,
-            KeyNotFoundException => StatusCodes.Status404NotFound,
+            BusNotFoundException => StatusCodes.Status404NotFound,
+            InvalidBusStateException => StatusCodes.Status409Conflict,
             _ => StatusCodes.Status500InternalServerError
         };
 

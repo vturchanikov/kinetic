@@ -1,8 +1,6 @@
 ﻿using FleetService.Application.DTOs;
 using FleetService.Application.Interfaces;
-using FleetService.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace FleetService.Api.Controllers;
 
@@ -11,9 +9,9 @@ namespace FleetService.Api.Controllers;
 public class BusesController(IBusesService busesService) : ControllerBase
 {
     [HttpGet("{code}", Name = "GetBusByCode")]
-    public async Task<ActionResult<BusDto>> GetBusAsync(string code, CancellationToken canelationToken)
+    public async Task<ActionResult<BusDto>> GetByCode(string code, CancellationToken canelationToken)
     {
-        var bus = await busesService.GetBusByCodeAsync(code, canelationToken);
+        var bus = await busesService.GetByCodeAsync(code, canelationToken);
 
         if(bus == null)
         {
@@ -24,9 +22,9 @@ public class BusesController(IBusesService busesService) : ControllerBase
     }
 
     [HttpGet("{code}/seats")]
-    public async Task<ActionResult<BusWithSeatsDto>> GetBusWithSeats(string code, CancellationToken canelationToken)
+    public async Task<ActionResult<BusWithSeatsDto>> GetByCodeWithSeats(string code, CancellationToken canelationToken)
     {
-        var bus = await busesService.GetBusWithSeatsByCodeAsync(code, canelationToken);
+        var bus = await busesService.GetByCodeWithSeatsAsync(code, canelationToken);
 
         if(bus == null)
         {
@@ -37,62 +35,57 @@ public class BusesController(IBusesService busesService) : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<BusDto>>> GetBuses(CancellationToken cancellationToken)
+    public async Task<ActionResult<List<BusDto>>> GetAll(CancellationToken cancellationToken)
     {
-        var buses = await busesService.GetBusesAsync(cancellationToken);
+        var buses = await busesService.GetAllAsync(cancellationToken);
 
         return Ok(buses);
     }
 
     [HttpGet("active")]
-    public async Task<ActionResult<List<BusDto>>> GetActiveBuses(CancellationToken cancellationToken)
+    public async Task<ActionResult<List<BusDto>>> GetActive(CancellationToken cancellationToken)
     {
-        var buses = await busesService.GetActiveBusesAsync(cancellationToken);
+        var buses = await busesService.GetActiveAsync(cancellationToken);
 
         return Ok(buses);
     }
 
     [HttpPost("{code}/activate")]
-    public Task<ActionResult> ActivateBus(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> Activate(string code, CancellationToken cancellationToken)
     {
         return ExecuteBusActionAsync(code, cancellationToken, busesService.ActivateAsync);
     }
 
     [HttpPost("{code}/repair")]
-    public Task<ActionResult> SendBusToRepair(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> SendToRepair(string code, CancellationToken cancellationToken)
     {
         return ExecuteBusActionAsync(code, cancellationToken, busesService.SendToRepairAsync);
     }
 
     [HttpPost("{code}/deactivate")]
-    public Task<ActionResult> DeactivateBus(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> Deactivate(string code, CancellationToken cancellationToken)
     {
         return ExecuteBusActionAsync(code, cancellationToken, busesService.DeactivateAsync);
     }
 
     [HttpPost("{code}/retire")]
-    public Task<ActionResult> RetireBus(string code, CancellationToken cancellationToken)
+    public Task<ActionResult> Retire(string code, CancellationToken cancellationToken)
     {
         return ExecuteBusActionAsync(code, cancellationToken, busesService.RetireAsync);
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateBus([FromBody]CreateBusDto bus,  CancellationToken cancellationToken)
+    public async Task<ActionResult> Create([FromBody]CreateBusDto bus,  CancellationToken cancellationToken)
     {
-        var createdBus = await busesService.CreateBusAsync(bus, cancellationToken);
+        var createdBus = await busesService.CreateAsync(bus, cancellationToken);
 
-        return CreatedAtRoute("GetBusByCode", new { code = bus.Code }, createdBus);
+        return CreatedAtRoute("GetByCode", new { code = bus.Code }, createdBus);
     }
 
     private async Task<ActionResult> ExecuteBusActionAsync(string code, CancellationToken cancellationToken,
-        Func<string, CancellationToken, Task<bool>> action)
+        Func<string, CancellationToken, Task> action)
     {
-        var success = await action(code, cancellationToken);
-
-        if (!success)
-        {
-            return NotFound($"No bus with the code {code} was found");
-        }
+        await action(code, cancellationToken);
 
         return NoContent();
     }

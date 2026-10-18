@@ -8,19 +8,19 @@ namespace FleetService.Infrastructure.Persistence.Repositories;
 
 public class BusesRepository(FleetDbContext context) : IBusesRepository
 {
-    public async Task<Bus?> GetBusByCodeAsync(string code, CancellationToken cancellationToken)
+    public async Task<Bus?> GetByCodeAsync(string code, CancellationToken cancellationToken)
     {
         return await context.Buses.FirstOrDefaultAsync(b => b.Code == code, cancellationToken);
     }
-    public async Task<Bus?> GetBusWithSeatsAsync(string code, CancellationToken cancellationToken)
+    public async Task<Bus?> GetByCodeWithSeatsAsync(string code, CancellationToken cancellationToken)
     {
         return await context.Buses.Include(b => b.Seats).FirstOrDefaultAsync(b => b.Code == code);
     }
-    public async Task<List<Bus>> GetBusesAsync(CancellationToken cancellationToken)
+    public async Task<List<Bus>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await context.Buses.ToListAsync();
     }
-    public async Task<List<Bus>> GetActiveBusesAsync(CancellationToken cancellationToken)
+    public async Task<List<Bus>> GetActiveAsync(CancellationToken cancellationToken)
     {
         return await context.Buses.Where(b => b.Status == BusStatus.Active).ToListAsync();
     }

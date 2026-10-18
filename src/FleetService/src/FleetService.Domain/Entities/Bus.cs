@@ -1,4 +1,5 @@
 ﻿using FleetService.Domain.Enums;
+using FleetService.Domain.Exceptions;
 using System.Reflection.PortableExecutable;
 
 namespace FleetService.Domain.Entities;
@@ -54,7 +55,7 @@ public class Bus
     {
         if (Status == BusStatus.Retired)
         {
-            throw new InvalidOperationException("A retired bus cannot be deactivated.");
+            throw new InvalidBusStateException("A retired bus cannot be deactivated.");
         }
 
         Status = BusStatus.Inactive;
@@ -64,7 +65,7 @@ public class Bus
     {
         if (Status == BusStatus.Retired)
         {
-            throw new InvalidOperationException("A retired bus cannot be send to repair");
+            throw new InvalidBusStateException("A retired bus cannot be send to repair");
         }
 
         Status = BusStatus.InRepair;
@@ -74,7 +75,7 @@ public class Bus
     {
         if(Status == BusStatus.Retired)
         {
-            throw new InvalidOperationException("A retired bus cannot return to service");
+            throw new InvalidBusStateException("A retired bus cannot return to service");
         }
 
         Status = BusStatus.Active;

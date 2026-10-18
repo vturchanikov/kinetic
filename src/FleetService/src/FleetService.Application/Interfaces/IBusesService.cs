@@ -5,15 +5,15 @@ namespace FleetService.Application.Interfaces;
 
 public interface IBusesService
 {
-    Task<bool> SendToRepairAsync(string code, CancellationToken cancellationToken);
-    Task<bool> ActivateAsync(string code, CancellationToken cancellationToken);
-    Task<bool> DeactivateAsync(string code, CancellationToken cancellationToken);
-    Task<bool> RetireAsync(string code, CancellationToken cancellationToken);
+    Task SendToRepairAsync(string code, CancellationToken cancellationToken);
+    Task ActivateAsync(string code, CancellationToken cancellationToken);
+    Task DeactivateAsync(string code, CancellationToken cancellationToken);
+    Task RetireAsync(string code, CancellationToken cancellationToken);
 
-    Task<BusDto?> GetBusByCodeAsync(string code, CancellationToken cancellationToken);
-    Task<BusWithSeatsDto?> GetBusWithSeatsByCodeAsync(string code, CancellationToken cancellationToken);
-    Task<List<BusDto>> GetBusesAsync(CancellationToken cancellationToken);
-    Task<List<BusDto>> GetActiveBusesAsync(CancellationToken cancellationToken);
+    Task<BusDto?> GetByCodeAsync(string code, CancellationToken cancellationToken);
+    Task<BusWithSeatsDto?> GetByCodeWithSeatsAsync(string code, CancellationToken cancellationToken);
+    Task<List<BusDto>> GetAllAsync(CancellationToken cancellationToken);
+    Task<List<BusDto>> GetActiveAsync(CancellationToken cancellationToken);
 
-    Task<BusDto> CreateBusAsync(CreateBusDto bus,  CancellationToken cancellationToken);
+    Task<BusDto> CreateAsync(CreateBusDto bus,  CancellationToken cancellationToken);
 }
