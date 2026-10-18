@@ -15,5 +15,5 @@ public interface IBusesService
     Task<List<BusDto>> GetBusesAsync(CancellationToken cancellationToken);
     Task<List<BusDto>> GetActiveBusesAsync(CancellationToken cancellationToken);
 
-    Task CreateBus(Bus bus,  CancellationToken cancellationToken);
+    Task<BusDto> CreateBusAsync(CreateBusDto bus,  CancellationToken cancellationToken);
 }

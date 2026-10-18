@@ -1,3 +1,4 @@
+using FleetService.Api.ExceptionHandling;
 using FleetService.Application.Interfaces;
 using FleetService.Application.Services;
 using FleetService.Infrastructure.Persistence;
@@ -19,11 +20,16 @@ builder.Services.AddDbContext<FleetDbContext>(options =>
 builder.Services.AddTransient<IBusesService, BusesService>();
 builder.Services.AddTransient<IBusesRepository, BusesRepository>();
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
 app.UseAuthorization();
+
+app.UseExceptionHandler();
 
 app.MapControllers();
 

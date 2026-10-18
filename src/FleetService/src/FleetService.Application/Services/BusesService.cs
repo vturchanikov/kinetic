@@ -37,30 +37,35 @@ public class BusesService(IBusesRepository busesRepository) : IBusesService
 
     public async Task<bool> ActivateAsync(string code, CancellationToken cancellationToken)
     {
-        return await UpdateBusAsync(code, cancellationToken, bus => bus.ReturnToService());
+        return await UpdateBusAsync(code, bus => bus.ReturnToService(), cancellationToken);
     }
 
     public async Task<bool> DeactivateAsync(string code, CancellationToken cancellationToken)
     {
-        return await UpdateBusAsync(code, cancellationToken, bus => bus.Deactivate());
+        return await UpdateBusAsync(code, bus => bus.Deactivate(), cancellationToken);
     }
 
     public async Task<bool> RetireAsync(string code, CancellationToken cancellationToken)
     {
-        return await UpdateBusAsync(code, cancellationToken, bus => bus.Retire());
+        return await UpdateBusAsync(code, bus => bus.Retire(), cancellationToken);
     }
 
     public async Task<bool> SendToRepairAsync(string code, CancellationToken cancellationToken)
     {
-        return await UpdateBusAsync(code, cancellationToken, bus => bus.SendToRepair());
+        return await UpdateBusAsync(code, bus => bus.SendToRepair(), cancellationToken);
     }
 
-    public Task CreateBus(Bus bus, CancellationToken cancellationToken)
+    public async Task<BusDto> CreateBusAsync(CreateBusDto busDto, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var bus = Bus.Create(busDto.Code, busDto.Model, busDto.Capacity, Domain.Enums.BusStatus.Inactive);
+
+        await busesRepository.AddAsync(bus, cancellationToken);
+        await busesRepository.SaveChangesAsync(cancellationToken);
+
+        return bus.Adapt<BusDto>();
     }
 
-    private async Task<bool> UpdateBusAsync(string code, CancellationToken cancellationToken, Action<Bus> action)
+    private async Task<bool> UpdateBusAsync(string code, Action<Bus> action, CancellationToken cancellationToken)
     {
         var bus = await busesRepository.GetBusByCodeAsync(code, cancellationToken);
 

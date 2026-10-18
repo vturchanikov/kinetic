@@ -10,7 +10,7 @@ namespace FleetService.Api.Controllers;
 [Route("api/[controller]")]
 public class BusesController(IBusesService busesService) : ControllerBase
 {
-    [HttpGet("{code}")]
+    [HttpGet("{code}", Name = "GetBusByCode")]
     public async Task<ActionResult<BusDto>> GetBusAsync(string code, CancellationToken canelationToken)
     {
         var bus = await busesService.GetBusByCodeAsync(code, canelationToken);
@@ -74,6 +74,14 @@ public class BusesController(IBusesService busesService) : ControllerBase
     public Task<ActionResult> RetireBus(string code, CancellationToken cancellationToken)
     {
         return ExecuteBusActionAsync(code, cancellationToken, busesService.RetireAsync);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> CreateBus([FromBody]CreateBusDto bus,  CancellationToken cancellationToken)
+    {
+        var createdBus = await busesService.CreateBusAsync(bus, cancellationToken);
+
+        return CreatedAtRoute("GetBusByCode", new { code = bus.Code }, createdBus);
     }
 
     private async Task<ActionResult> ExecuteBusActionAsync(string code, CancellationToken cancellationToken,

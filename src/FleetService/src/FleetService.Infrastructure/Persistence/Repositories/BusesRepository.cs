@@ -1,4 +1,5 @@
-﻿using FleetService.Application.Interfaces;
+﻿using FleetService.Application.DTOs;
+using FleetService.Application.Interfaces;
 using FleetService.Domain.Entities;
 using FleetService.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -24,19 +25,9 @@ public class BusesRepository(FleetDbContext context) : IBusesRepository
         return await context.Buses.Where(b => b.Status == BusStatus.Active).ToListAsync();
     }
 
-    public Task<List<Bus>> GetBusesInRepair()
+    public async Task AddAsync(Bus bus, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
-    }    
-
-    public Task<List<Bus>> GetInactiveBuses()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<List<Bus>> GetRetiredBuses()
-    {
-        throw new NotImplementedException();
+        await context.Buses.AddAsync(bus);
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)

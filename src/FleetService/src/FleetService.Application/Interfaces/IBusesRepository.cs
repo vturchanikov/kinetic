@@ -9,4 +9,5 @@ public interface IBusesRepository
     Task<List<Bus>> GetBusesAsync(CancellationToken cancellationToken);
     Task<List<Bus>> GetActiveBusesAsync(CancellationToken cancellationToken);
     Task SaveChangesAsync(CancellationToken cancellation);
+    Task AddAsync(Bus bus, CancellationToken cancellationToken);
 }

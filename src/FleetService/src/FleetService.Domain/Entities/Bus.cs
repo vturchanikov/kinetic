@@ -29,7 +29,7 @@ public class Bus
         {
             throw new ArgumentOutOfRangeException(nameof(status), "Invalid bus status");
         }
-        if(capacity < 0)
+        if(capacity <= 0)
         {
             throw new ArgumentOutOfRangeException(nameof(capacity));
         }
