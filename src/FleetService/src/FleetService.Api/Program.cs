@@ -1,10 +1,12 @@
 using FleetService.Api.ExceptionHandling;
 using FleetService.Application.Interfaces;
 using FleetService.Application.Services;
+using FleetService.Application.Validators;
 using FleetService.Infrastructure.Persistence;
 using FleetService.Infrastructure.Persistence.Repositories;
 using FleetService.Infrastructure.Persistence.Seeding;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,7 @@ builder.Services.AddTransient<IBusesRepository, BusesRepository>();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateBusDtoValidator>();
 
 var app = builder.Build();
 

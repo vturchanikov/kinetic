@@ -1,12 +1,15 @@
 ﻿using FleetService.Application.DTOs;
 using FleetService.Application.Exceptions;
 using FleetService.Application.Interfaces;
+using FleetService.Application.Validators;
 using FleetService.Domain.Entities;
+using FluentValidation;
 using Mapster;
+using System.IO.IsolatedStorage;
 
 namespace FleetService.Application.Services;
 
-public class BusesService(IBusesRepository busesRepository) : IBusesService
+public class BusesService(IBusesRepository busesRepository, IValidator<CreateBusDto> createBusValidator) : IBusesService
 {
     public async Task<BusDto?> GetByCodeAsync(string code, CancellationToken cancellationToken)
     {
@@ -58,7 +61,25 @@ public class BusesService(IBusesRepository busesRepository) : IBusesService
 
     public async Task<BusDto> CreateAsync(CreateBusDto busDto, CancellationToken cancellationToken)
     {
-        var bus = Bus.Create(busDto.Code, busDto.Model, busDto.Capacity, Domain.Enums.BusStatus.Inactive);
+        var normalizedDto = new CreateBusDto
+        {
+            Code = busDto.Code?.Trim() ?? string.Empty,
+            Model = busDto.Model?.Trim() ?? string.Empty,
+            Capacity = busDto.Capacity
+        };
+
+        var validationResult = await createBusValidator.ValidateAsync(normalizedDto, cancellationToken);
+
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
+        var bus = Bus.Create(
+            normalizedDto.Code,
+            normalizedDto.Model,
+            normalizedDto.Capacity,
+            Domain.Enums.BusStatus.Inactive);
 
         await busesRepository.AddAsync(bus, cancellationToken);
         await busesRepository.SaveChangesAsync(cancellationToken);

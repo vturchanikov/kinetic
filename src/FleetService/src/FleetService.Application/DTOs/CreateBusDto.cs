@@ -1,6 +1,4 @@
-﻿using FleetService.Domain.Enums;
-
-namespace FleetService.Application.DTOs;
+﻿namespace FleetService.Application.DTOs;
 
 public class CreateBusDto
 {
