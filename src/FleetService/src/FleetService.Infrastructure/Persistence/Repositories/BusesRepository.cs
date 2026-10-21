@@ -29,9 +29,4 @@ public class BusesRepository(FleetDbContext context) : IBusesRepository
     {
         await context.Buses.AddAsync(bus);
     }
-
-    public async Task SaveChangesAsync(CancellationToken cancellationToken)
-    {
-        await context.SaveChangesAsync(); 
-    }
 }

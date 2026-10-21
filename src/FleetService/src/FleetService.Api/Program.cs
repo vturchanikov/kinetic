@@ -1,30 +1,16 @@
-using FleetService.Api.ExceptionHandling;
-using FleetService.Application.Interfaces;
-using FleetService.Application.Services;
-using FleetService.Application.Validators;
 using FleetService.Infrastructure.Persistence;
-using FleetService.Infrastructure.Persistence.Repositories;
 using FleetService.Infrastructure.Persistence.Seeding;
-using Microsoft.EntityFrameworkCore;
-using FluentValidation;
+using FleetService.Infrastructure.DependencyInjection;
+using FleetService.Application.DependencyInjection;
+using FleetService.Api.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-
-builder.Services.AddDbContext<FleetDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-builder.Services.AddTransient<IBusesService, BusesService>();
-builder.Services.AddTransient<IBusesRepository, BusesRepository>();
-
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-builder.Services.AddProblemDetails();
-builder.Services.AddValidatorsFromAssemblyContaining<CreateBusDtoValidator>();
+builder.Services.AddFleetInfrastructure(builder.Configuration);
+builder.Services.AddFleetApplication();
+builder.Services.AddFleetApi();
 
 var app = builder.Build();
 

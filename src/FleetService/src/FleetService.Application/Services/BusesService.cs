@@ -9,7 +9,7 @@ using System.IO.IsolatedStorage;
 
 namespace FleetService.Application.Services;
 
-public class BusesService(IBusesRepository busesRepository, IValidator<CreateBusDto> createBusValidator) : IBusesService
+public class BusesService(IBusesRepository busesRepository, IUnitOfWork unitOfWork, IValidator<CreateBusDto> createBusValidator) : IBusesService
 {
     public async Task<BusDto?> GetByCodeAsync(string code, CancellationToken cancellationToken)
     {
@@ -82,7 +82,7 @@ public class BusesService(IBusesRepository busesRepository, IValidator<CreateBus
             Domain.Enums.BusStatus.Inactive);
 
         await busesRepository.AddAsync(bus, cancellationToken);
-        await busesRepository.SaveChangesAsync(cancellationToken);
+        await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return bus.Adapt<BusDto>();
     }
@@ -98,6 +98,6 @@ public class BusesService(IBusesRepository busesRepository, IValidator<CreateBus
 
         action(bus);
 
-        await busesRepository.SaveChangesAsync(cancellationToken);
+        await unitOfWork.SaveChangesAsync(cancellationToken);
     }
 }
