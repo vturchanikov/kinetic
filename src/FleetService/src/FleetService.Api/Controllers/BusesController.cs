@@ -8,7 +8,7 @@ namespace FleetService.Api.Controllers;
 [Route("api/[controller]")]
 public class BusesController(IBusesService busesService) : ControllerBase
 {
-    [HttpGet("{code}", Name = "GetBusByCode")]
+    [HttpGet("{code}", Name = "GetByCode")]
     public async Task<ActionResult<BusDto>> GetByCode(string code, CancellationToken canelationToken)
     {
         var bus = await busesService.GetByCodeAsync(code, canelationToken);

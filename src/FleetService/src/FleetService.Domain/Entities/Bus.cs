@@ -1,6 +1,5 @@
 ﻿using FleetService.Domain.Enums;
 using FleetService.Domain.Exceptions;
-using System.Reflection.PortableExecutable;
 
 namespace FleetService.Domain.Entities;
 
@@ -9,10 +8,10 @@ public class Bus
     private readonly List<Seat> _seats = [];
     private Bus() { }
     public int Id { get; private set; }
-    public string Code { get; set; } = null!;
-    public string Model { get; set; } = null!;
+    public string Code { get; private set; } = null!;
+    public string Model { get; private set; } = null!;
     public int Capacity { get; private set; }
-    public BusStatus Status { get; set; }
+    public BusStatus Status { get; private set; }
 
     public IReadOnlyCollection<Seat> Seats => _seats;
 
@@ -65,7 +64,7 @@ public class Bus
     {
         if (Status == BusStatus.Retired)
         {
-            throw new InvalidBusStateException("A retired bus cannot be send to repair");
+            throw new InvalidBusStateException("A retired bus cannot be sent to repair");
         }
 
         Status = BusStatus.InRepair;
