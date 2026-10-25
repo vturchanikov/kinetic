@@ -3,8 +3,9 @@
 public class Trip
 {
     public int Id { get; set; }
-    public int TrainId { get; set; }
-    public required DateTime ScheduledDeparture { get; set; }
-    //public Train Train { get; set; } = null!;
+    public int BusId { get; set; }
+    public int RouteId { get; set; }
+
+    public Route Route { get; set; } = null!;
     public ICollection<TripStop> Stops { get; set; } = [];
 }
